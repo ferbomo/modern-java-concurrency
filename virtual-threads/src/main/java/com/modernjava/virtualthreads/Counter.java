@@ -12,7 +12,8 @@ public class Counter {
     private final ReentrantLock reentrantLock = new ReentrantLock();
 
     private final Object lock = new Object();
-    public int getAndIncrement(int index ) {
+
+    public int getAndIncrement(int index) {
         synchronized (lock) {
             log("started doSomeWork : " + index);
             CommonUtil.sleep(1000);
@@ -21,14 +22,14 @@ public class Counter {
         }
     }
 
-    public int getAndIncrementUsingRentrantLock(int index ) {
+    public int getAndIncrementUsingRentrantLock(int index) {
         reentrantLock.lock();
         try {
             log("started doSomeWork : " + index);
             CommonUtil.sleep(1000);
             log("finished doSomeWork : " + index);
             return counter++;
-        }finally {
+        } finally {
             reentrantLock.unlock();
         }
     }

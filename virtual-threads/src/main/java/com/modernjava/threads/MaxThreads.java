@@ -10,6 +10,7 @@ import static com.modernjava.util.LoggerUtil.log;
 
 public class MaxThreads {
 
+    public static final int MAX_THREADS = 17000;
     static AtomicInteger atomicInteger = new AtomicInteger();
 
     public static void doSomeWork(int index) {
@@ -22,7 +23,11 @@ public class MaxThreads {
 
     public static void main(String[] args) {
 
+        IntStream.rangeClosed(1, MAX_THREADS)
+                        .forEach(i -> {
+                            Thread.ofPlatform().start(() -> doSomeWork(i));
+                        });
         log("Program Completed!");
-
     }
+
 }

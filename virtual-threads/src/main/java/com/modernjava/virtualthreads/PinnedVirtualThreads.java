@@ -13,7 +13,7 @@ public class PinnedVirtualThreads {
 
     public static void main(String[] args) {
         var counter = new Counter();
-        int MAX_THREADS = 10;
+        int MAX_THREADS = 100000;
         IntStream.rangeClosed(1, MAX_THREADS)
                 .forEach((i) -> {
                     //Thread.ofVirtual().start(() -> new Counter().getAndIncrement(i));
