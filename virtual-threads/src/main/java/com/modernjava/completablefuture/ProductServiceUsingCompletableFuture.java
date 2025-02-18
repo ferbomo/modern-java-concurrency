@@ -47,16 +47,16 @@ public class ProductServiceUsingCompletableFuture {
         CompletableFuture<Reviews> cfReview = CompletableFuture.supplyAsync(() -> reviewService.retrieveReviews(productId));
 
         return CompletableFuture.allOf(cfProductInfo, cfReview)
-//                .whenComplete((unused, throwable) -> {
-//                    if (throwable != null) {
-//                        LoggerUtil.log("Exception Occurred in the business logic " + throwable.getMessage());
-//                        throw new RuntimeException(throwable.getMessage());
-//                    }
-//                })
-                .exceptionally(throwable -> {
-                    LoggerUtil.log("Exception Occurred in the business logic " + throwable.getMessage());
-                    throw new RuntimeException(throwable);
+                .whenComplete((unused, throwable) -> {
+                    if (throwable != null) {
+                        LoggerUtil.log("Exception Occurred in the business logic " + throwable.getMessage());
+                        throw new RuntimeException(throwable.getMessage());
+                    }
                 })
+//                .exceptionally(throwable -> {
+//                    LoggerUtil.log("Exception Occurred in the business logic " + throwable.getMessage());
+//                    throw new RuntimeException(throwable);
+//                })
                 .thenApply(v -> new Product(productId, cfProductInfo.join(), cfReview.join()))
                 .join();
     }

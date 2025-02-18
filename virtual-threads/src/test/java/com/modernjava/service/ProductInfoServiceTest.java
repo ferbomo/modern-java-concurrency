@@ -20,23 +20,29 @@ class ProductInfoServiceTest {
     ProductInfoService productInfoService = new ProductInfoService();
 
     @Test
-    void retrieveProductInfo() {
+    void retrieveProductInfo_MultipleSources() {
         // In this case, the time it takes is close to the first task which completes in 1 second.
-
+        var productInfo = productInfoService.retrieveProductInfoMultipleResources("ABC");
+        assertNotNull(productInfo);
     }
 
     @Test
     void retrieveProductInfo_simulateError() {
         // In this case, the time it takes is close to the first task which completes in 1 second.
-
+        when(productInfoService.retrieveProductInfo(anyString())).
+                thenThrow(new RuntimeException("Exception Occurred"));
+        when(productInfoService.retrieveProductInfoV2(anyString())).
+                thenThrow(new RuntimeException("Exception Occurred"));
+        var productInfo = productInfoService.retrieveProductInfoMultipleResources("ABC");
+        assertNotNull(productInfo);
     }
 
     @Test
-    @Disabled
+    //@Disabled
     void retrieveProductInfo_http() throws IOException, InterruptedException {
         var productInfo = productInfoService.retrieveProductInfoHttp("ABC");
-        LoggerUtil.log("productInfo : "+ productInfo);
+        LoggerUtil.log("productInfo : " + productInfo);
         assertNotNull(productInfo);
-
     }
+
 }

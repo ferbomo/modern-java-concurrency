@@ -1,6 +1,5 @@
 package com.modernjava.service;
 
-import com.modernjava.domain.ProductInfo;
 import com.modernjava.domain.Reviews;
 import com.modernjava.util.CommonUtil;
 import com.modernjava.util.LoggerUtil;
@@ -25,7 +24,8 @@ public class ReviewService {
         var httpRequest = requestBuilder(REVIEWS_URL);
         HttpResponse<String> response =
                 httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
-        System.out.println("Status code: " + response.statusCode());
+        LoggerUtil.log("Status code: " + response.statusCode());
         return objectMapper.readValue(response.body(), Reviews.class);
     }
+
 }

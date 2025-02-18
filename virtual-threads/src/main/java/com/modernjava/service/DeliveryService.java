@@ -4,7 +4,6 @@ package com.modernjava.service;
 import com.modernjava.domain.DeliveryDetails;
 import com.modernjava.domain.DeliveryOptionEnum;
 import com.modernjava.domain.ProductInfo;
-import com.modernjava.domain.Reviews;
 import com.modernjava.util.CommonUtil;
 import com.modernjava.util.LoggerUtil;
 
@@ -18,8 +17,9 @@ import static com.modernjava.util.LoggerUtil.log;
 
 public class DeliveryService {
 
-    public  static String DELIVERY_DETAILS_URL = "http://127.0.0.1:8000/virtual-threads/src/main/resources/deliveryDetails.json";
-    public DeliveryDetails retrieveDeliveryInfo(ProductInfo productInfo){
+    public static String DELIVERY_DETAILS_URL = "http://127.0.0.1:8000/virtual-threads/src/main/resources/deliveryDetails.json";
+
+    public DeliveryDetails retrieveDeliveryInfo(ProductInfo productInfo) {
         log("retrieving dleivery details for productInfo : " + productInfo);
         CommonUtil.sleep(1000);
         log("retrieveDeliveryInfo after Delay");
@@ -32,8 +32,8 @@ public class DeliveryService {
         var httpRequest = requestBuilder(DELIVERY_DETAILS_URL);
         HttpResponse<String> response =
                 httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
-        System.out.println("Status code: " + response.statusCode());
+        LoggerUtil.log("Status code: " + response.statusCode());
         return objectMapper.readValue(response.body(), DeliveryDetails.class);
-
     }
+
 }

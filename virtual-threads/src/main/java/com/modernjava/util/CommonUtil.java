@@ -35,6 +35,7 @@ public class CommonUtil {
         try{
             Thread.sleep(delayMilliSeconds);
         }catch (Exception e){
+            e.printStackTrace();
             log("Exception is :" + e.getMessage());
         }
 
