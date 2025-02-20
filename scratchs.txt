@@ -1,0 +1,42 @@
+### With Tomcat threads
+
+Benchmark with 10 requests and 10 concurrent users
+Time taken for tests:   4.164 seconds
+Percentage of the requests served within a certain time (ms)
+  50%   2013
+  66%   2013
+  75%   2013
+  80%   2013
+  90%   2152
+  95%   2152
+  98%   2152
+  99%   2152
+ 100%   2152 (longest request)
+
+
+Benchmark with 20 requests and 10 concurrent users
+Time taken for tests:   6.066 seconds
+Percentage of the requests served within a certain time (ms)
+  50%   2024
+  66%   2025
+  75%   2025
+  80%   2025
+  90%   2026
+  95%   2026
+  98%   2026
+  99%   2026
+ 100%   2026 (longest request)
+
+
+Benchmark with 60 requests and 20 concurrent users
+Time taken for tests:   14.158 seconds
+Percentage of the requests served within a certain time (ms)
+  50%   4042
+  66%   4043
+  75%   4044
+  80%   4046
+  90%   4048
+  95%   4056
+  98%   4056
+  99%   4058
+ 100%   4058 (longest request)

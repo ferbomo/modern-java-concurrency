@@ -9,7 +9,22 @@ import org.springframework.web.client.RestClient;
 @Component
 public class RemoteServiceClient {
 
-
     private static final Logger log = LoggerFactory.getLogger(RemoteServiceClient.class);
+
+    private final RestClient restClient;
+
+    public RemoteServiceClient(RestClient.Builder builder) {
+        this.restClient = builder.build();
+    }
+
+    public String invokeBlockingService(Integer seconds) {
+        log.info("Current executing thread: {} ", Thread.currentThread());
+        var response = restClient.get()
+                .uri("http://localhost:8085/remote/" + seconds)
+                .retrieve()
+                .toEntity(String.class);
+        log.info("response status code:{} , and the thread is: {} ", response.getStatusCode(), Thread.currentThread());
+        return response.getBody();
+    }
 
 }

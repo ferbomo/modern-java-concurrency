@@ -12,6 +12,6 @@ public class RemoteServiceApp {
     public static void main(String[] args) {
         SpringApplication.run(RemoteServiceApp.class, args);
         log.info("Started the RemoteService App!");
-
     }
+
 }

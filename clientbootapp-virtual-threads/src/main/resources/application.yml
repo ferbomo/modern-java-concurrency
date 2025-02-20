@@ -1,9 +1,9 @@
-#server:
-#  tomcat:
-#    threads:
-#      max: 10
-#spring:
-#  threads:
-#    virtual:
-#      enabled: true
+server:
+  tomcat:
+    threads:
+      max: 10
+spring:
+  threads:
+    virtual:
+      enabled: true
 

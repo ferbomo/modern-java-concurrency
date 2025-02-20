@@ -1,0 +1,43 @@
+### With Virtual threads
+
+Benchmark with 10 requests and 10 concurrent users
+Time taken for tests:   4.102 seconds
+Percentage of the requests served within a certain time (ms)
+  50%   2021
+  66%   2021
+  75%   2021
+  80%   2021
+  90%   2082
+  95%   2082
+  98%   2082
+  99%   2082
+ 100%   2082 (longest request)
+
+
+Benchmark with 20 requests and 10 concurrent users
+Time taken for tests:   6.034 seconds
+Percentage of the requests served within a certain time (ms)
+  50%   2015
+  66%   2016
+  75%   2018
+  80%   2018
+  90%   2019
+  95%   2019
+  98%   2019
+  99%   2019
+ 100%   2019 (longest request)
+
+
+Benchmark with 60 requests and 20 concurrent users
+Time taken for tests:   8.079 seconds
+Percentage of the requests served within a certain time (ms)
+  50%   2021
+  66%   2022
+  75%   2023
+  80%   2023
+  90%   2024
+  95%   2025
+  98%   2025
+  99%   2025
+ 100%   2025 (longest request)
+

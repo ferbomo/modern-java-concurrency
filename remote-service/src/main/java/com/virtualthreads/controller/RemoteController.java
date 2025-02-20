@@ -16,12 +16,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class RemoteController {
 
     private static final Logger log = LoggerFactory.getLogger(RemoteController.class);
-    AtomicInteger atomicInteger= new AtomicInteger();
+    AtomicInteger atomicInteger = new AtomicInteger();
+
     @GetMapping("/{seconds}")
     public ResponseEntity<String> block(@PathVariable("seconds") Integer seconds) throws InterruptedException {
-        Thread.sleep(seconds*1000); // Blocks the tomcat-thread for n seconds
+        Thread.sleep(seconds * 1000); // Blocks the tomcat-thread for n seconds
         var invokeCount = atomicInteger.incrementAndGet();
-        log.info("invokeCount : {} " ,  invokeCount);
-        return ResponseEntity.ok("Hello, delayed by "+ seconds + " seconds.");
+        log.info("invokeCount : {} ", invokeCount);
+        return ResponseEntity.ok("Hello, delayed by " + seconds + " seconds.");
     }
+
 }
